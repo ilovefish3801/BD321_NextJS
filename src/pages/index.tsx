@@ -5,6 +5,13 @@ import styles from "@/styles/Home.module.css";
 import Card from "@/components/card";
 
 export default function Home() {
+  const data = [
+    { title: "Test1", description: "Lorem1" },
+    { title: "Test2", description: "Lorem2" },
+    { title: "Test3", description: "Lorem3" },
+    { title: "Test4", description: "Lorem4" },
+    { title: "Test5", description: "Lorem5" },
+  ];
   return (
     <>
       <Head>
@@ -26,9 +33,9 @@ export default function Home() {
             <li></li>
           </ul>
         </nav>
-        <Card />
-        <Card />
-        <Card />
+        {data.map((e: any) => {
+          return <Card data={e} key={e} />;
+        })}
       </main>
     </>
   );

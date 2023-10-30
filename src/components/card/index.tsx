@@ -3,17 +3,22 @@ import React from "react";
 import s from "./card.module.css";
 // import "./index.css";
 
-const card = () => {
+interface Props {
+  key: any;
+  data: {
+    title: string;
+    description: string;
+  };
+}
+
+const card = (props: Props) => {
+  const { title, description } = props.data;
+
   return (
     <>
       <div className={s.card}>
-        <h2>title card</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ut
-          expedita dicta sunt asperiores quidem, debitis molestiae, iusto rerum
-          tempora natus. Facilis doloremque, repudiandae assumenda corrupti
-          suscipit aperiam cupiditate odio.
-        </p>
+        <h2>{title}</h2>
+        <p>{description}</p>
       </div>
     </>
   );
