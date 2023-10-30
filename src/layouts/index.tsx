@@ -1,9 +1,18 @@
 import React from "react";
+// components
+import Header from "./header";
+import Footer from "./footer";
 
-const Layout = () => {
+interface Props {
+  children: any;
+}
+
+const Layout = ({ children }: Props) => {
   return (
     <>
-      <div>Layout</div>
+      <Header />
+      {children}
+      <Footer />
     </>
   );
 };
