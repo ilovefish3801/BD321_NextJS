@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
+// import components
+import Card from "@/components/card";
 
 export default function Home() {
   return (
@@ -24,6 +26,9 @@ export default function Home() {
             <li></li>
           </ul>
         </nav>
+        <Card />
+        <Card />
+        <Card />
       </main>
     </>
   );
