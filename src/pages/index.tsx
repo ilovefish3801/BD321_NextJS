@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
@@ -7,14 +7,28 @@ import Card from "@/components/card";
 
 export default function Home() {
   const data = [
-    { title: "Test1", description: "Lorem1" },
-    { title: "Test2", description: "Lorem2" },
-    { title: "Test3", description: "Lorem3" },
-    { title: "Test4", description: "Lorem4" },
-    { title: "Test5", description: "Lorem5" },
+    { id: 1, title: "Test1", description: "Lorem1" },
+    { id: 2, title: "Test2", description: "Lorem2" },
+    { id: 3, title: "Test3", description: "Lorem3" },
+    { id: 4, title: "Test4", description: "Lorem4" },
+    { id: 5, title: "Test5", description: "Lorem5" },
   ];
   // states
   const [number, setNumber] = useState(0);
+
+  // on loan
+  useEffect(() => {
+    console.log("UseEffect", number);
+  }, [number]);
+
+  // calc
+  const adult = useMemo(() => {
+    if (number >= 18) {
+      return "Повнолітній";
+    } else {
+      return "Не повнолітній";
+    }
+  }, [number]);
 
   return (
     <>
@@ -37,6 +51,7 @@ export default function Home() {
             <li></li>
           </ul>
         </nav>
+        <div>{adult}</div>
         <div>{number}</div>
         <div>
           {/* Increment */}
@@ -58,9 +73,16 @@ export default function Home() {
             -{" "}
           </button>
         </div>
-        {data.map((e: any) => {
-          return <Card num={number} data={e} key={e} />;
-        })}
+        {/* {data.map((e: any) => {
+          return <Card num={number} data={e} key={e.id} />;
+        })} */}
+        {/* form */}
+        <form action="">
+          <input type="text" placeholder="Enter your name: " />
+          <input type="mail" placeholder="Enter your mail: " />
+          <textarea placeholder="Enter text: "></textarea>
+          <input type="submit" />
+        </form>
       </main>
     </>
   );
