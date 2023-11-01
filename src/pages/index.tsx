@@ -5,6 +5,12 @@ import styles from "@/styles/Home.module.css";
 // import components
 import Card from "@/components/card";
 
+interface User {
+  name: string;
+  mail: string;
+  comment: string;
+}
+
 export default function Home() {
   const data = [
     { id: 1, title: "Test1", description: "Lorem1" },
@@ -14,7 +20,13 @@ export default function Home() {
     { id: 5, title: "Test5", description: "Lorem5" },
   ];
   // states
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState<number>(0);
+  // const [name, setName] = useState<string>("");
+  let [user, setUser] = useState<User>({
+    name: "test",
+    mail: "test",
+    comment: "test",
+  });
 
   // on loan
   useEffect(() => {
@@ -78,9 +90,38 @@ export default function Home() {
         })} */}
         {/* form */}
         <form action="">
-          <input type="text" placeholder="Enter your name: " />
-          <input type="mail" placeholder="Enter your mail: " />
-          <textarea placeholder="Enter text: "></textarea>
+          <input
+            value={user.name}
+            type="text"
+            placeholder="Enter your name: "
+            onChange={(e) => {
+              setUser({
+                ...user,
+                name: e.target.value,
+              });
+            }}
+          />
+          <input
+            value={user.mail}
+            type="mail"
+            placeholder="Enter your mail: "
+            onChange={(e) => {
+              setUser({
+                ...user,
+                mail: e.target.value,
+              });
+            }}
+          />
+          <textarea
+            value={user.comment}
+            placeholder="Enter text: "
+            onChange={(e) => {
+              setUser({
+                ...user,
+                comment: e.target.value,
+              });
+            }}
+          ></textarea>
           <input type="submit" />
         </form>
       </main>
