@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
@@ -12,6 +13,9 @@ export default function Home() {
     { title: "Test4", description: "Lorem4" },
     { title: "Test5", description: "Lorem5" },
   ];
+  // states
+  const [number, setNumber] = useState(0);
+
   return (
     <>
       <Head>
@@ -33,8 +37,29 @@ export default function Home() {
             <li></li>
           </ul>
         </nav>
+        <div>{number}</div>
+        <div>
+          {/* Increment */}
+          <button
+            onClick={() => {
+              setNumber(number + 1);
+            }}
+          >
+            {" "}
+            +{" "}
+          </button>
+          {/* Decrement */}
+          <button
+            onClick={() => {
+              setNumber(number - 1);
+            }}
+          >
+            {" "}
+            -{" "}
+          </button>
+        </div>
         {data.map((e: any) => {
-          return <Card data={e} key={e} />;
+          return <Card num={number} data={e} key={e} />;
         })}
       </main>
     </>

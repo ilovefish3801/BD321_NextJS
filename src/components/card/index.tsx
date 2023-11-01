@@ -9,6 +9,7 @@ interface Props {
     title: string;
     description: string;
   };
+  num: number;
 }
 
 const card = (props: Props) => {
@@ -19,6 +20,7 @@ const card = (props: Props) => {
       <div className={s.card}>
         <h2>{title}</h2>
         <p>{description}</p>
+        <h1>{props.num}</h1>
       </div>
     </>
   );
