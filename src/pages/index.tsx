@@ -4,6 +4,8 @@ import Link from "next/link";
 import styles from "@/styles/Home.module.css";
 // import components
 import Card from "@/components/card";
+// modules
+import { Server } from "@/modules/server";
 
 interface User {
   name: string;
@@ -19,6 +21,8 @@ export default function Home() {
     { id: 4, title: "Test4", description: "Lorem4" },
     { id: 5, title: "Test5", description: "Lorem5" },
   ];
+  // init
+  const server = new Server();
   // states
   const [number, setNumber] = useState<number>(0);
   // const [name, setName] = useState<string>("");
@@ -122,7 +126,13 @@ export default function Home() {
               });
             }}
           ></textarea>
-          <input type="submit" />
+          <input
+            onClick={(e) => {
+              e.preventDefault();
+              server.post("/endpoint", user);
+            }}
+            type="submit"
+          />
         </form>
       </main>
     </>
