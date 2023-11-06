@@ -60,7 +60,7 @@ export default function Home() {
       </Head>
       <main>
         HELLO WORLD!
-        <Banner />
+        <Banner title="test props" description="Lorem Ipsum" />
         <nav>
           <ul>
             <li>
