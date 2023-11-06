@@ -7,8 +7,8 @@ const news = () => {
   return (
     <div>
       <Link href="/">Головна</Link>
-      <Card />
-      <Card />
+      {/* <Card />
+      <Card /> */}
     </div>
   );
 };

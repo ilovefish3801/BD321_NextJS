@@ -1,11 +1,15 @@
 import { useState, useEffect, useMemo } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 // import components
 import Card from "@/components/card";
+import Banner from "@/components/banner";
 // modules
 import { Server } from "@/modules/server";
+// pictures
+import img from "@/assets/img/barbie.jpg";
 
 interface User {
   name: string;
@@ -56,6 +60,7 @@ export default function Home() {
       </Head>
       <main>
         HELLO WORLD!
+        <Banner />
         <nav>
           <ul>
             <li>
@@ -134,6 +139,17 @@ export default function Home() {
             type="submit"
           />
         </form>
+        <Image
+          style={{
+            marginLeft: 25,
+            padding: 25,
+          }}
+          src={img}
+          width={300}
+          height={300}
+          alt="test"
+          quality={85}
+        />
       </main>
     </>
   );
