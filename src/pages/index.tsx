@@ -49,7 +49,11 @@ export default function Home() {
       return "Не повнолітній";
     }
   }, [number]);
-
+  // functions
+  const reverseProps = (data: string) => {
+    console.log("Reverse props! Worked!");
+    console.log(data);
+  };
   return (
     <>
       <Head>
@@ -60,7 +64,11 @@ export default function Home() {
       </Head>
       <main>
         HELLO WORLD!
-        <Banner title="test props" description="Lorem Ipsum" />
+        <Banner
+          reverseProps={reverseProps}
+          title="test props"
+          description="Lorem Ipsum"
+        />
         <nav>
           <ul>
             <li>
