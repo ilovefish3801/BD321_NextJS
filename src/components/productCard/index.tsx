@@ -21,7 +21,7 @@ const Card = ({ data }: Props) => {
         <h2>{title}</h2>
         <p>{description}</p>
         <div>{price}</div>
-        <Link href={`/products/${id}`}>Детальніше</Link>
+        <Link href={`/products/${title}?id=${id}`}>Детальніше</Link>
       </div>
     </>
   );
