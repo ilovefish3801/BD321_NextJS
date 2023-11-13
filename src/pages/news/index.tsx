@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-// import components
-import Card from "@/components/card";
-
+// components
+import CardNews from "@/components/cardNews";
+// modules
+import { News } from "@/modules/news";
 const news = () => {
+  // init
+  const n = new News();
+  // states
+  const [news, setNews] = useState<any>([]);
+  // load
+  useEffect(() => {
+    n.getData("posts").then((data: any) => {
+      setNews(data);
+    });
+  }, []);
   return (
-    <div>
-      <Link href="/">Головна</Link>
-      {/* <Card />
-      <Card /> */}
-    </div>
+    <>
+      <h2>All News</h2>
+      {news.map((item: any) => {
+        return <CardNews data={item} key={item.id} />;
+      })}
+    </>
   );
 };
 
