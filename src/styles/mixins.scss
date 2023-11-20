@@ -1,0 +1,11 @@
+@mixin btn_buy($width, $height, $color, $br){
+    width: $width;
+    height: $height;
+    color: $color;
+    border-radius: $br;
+    /*You can use if and else by simply writing @if / @else*/
+}
+
+/* To use .class{
+    @include btn_buy(properties)
+}
