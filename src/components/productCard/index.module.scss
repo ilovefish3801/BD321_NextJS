@@ -1,7 +1,10 @@
+@import "/src/styles/varibles.scss";
+
 .card{
     padding: 12px;
-    border: 1px solid red;
+    border: 1px solid palevioletred;
     margin-bottom: 10px;
+    
     &__btn{
         padding: 4px 6px;
         color: #fff;
@@ -11,7 +14,7 @@
         margin-left: 8px;
         cursor: pointer;
         &_del{
-            background-color: #f00;
+            background-color: $--primary-color;
             display: inline;
 
             padding: 4px 6px;
