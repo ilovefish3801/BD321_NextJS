@@ -21,10 +21,25 @@ export const cartSlice = createSlice({
     addDataFromLS: (state, action: PayloadAction<[]>) => {
       state.items = [...action.payload];
     },
+    deleteItemFromCart: (state, action: PayloadAction<number>) =>{
+      const productID = action.payload
+      // check if product ID is in the state
+      const isExist = state.items.indexOf(productID)
+      // cond
+      if (isExist != -1){
+        state.items = state.items.filter(item => item != productID)
+      }else{
+        alert('Цього продукту в корзині немає')
+      }
+
+    },
+    deleteItemsFromCart: (state) =>{
+      state.items = []
+    }
   },
 });
 
 // export reducer
-export const { addItemToCart, addDataFromLS } = cartSlice.actions;
+export const { addItemToCart, addDataFromLS, deleteItemFromCart, deleteItemsFromCart } = cartSlice.actions;
 // export slice
 export default cartSlice.reducer;

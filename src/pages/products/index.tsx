@@ -7,6 +7,8 @@ import { Product } from "@/interfaces";
 import Card from "@/components/productCard";
 // modules
 import { Products as Prod } from "@/modules/products";
+import { deleteItemsFromCart } from "@/store/features/cart";
+import { useDispatch } from "react-redux";
 
 const getAllProducts = async () => {
   return await fetch("https://fakestoreapi.com/products")
@@ -19,6 +21,7 @@ const getAllProducts = async () => {
 const Products = () => {
   // init
   const prod = new Prod();
+  const dispatch = useDispatch()
   // states
   const [products, setProducts] = useState<Product[] | null>(null);
   // load
@@ -29,6 +32,9 @@ const Products = () => {
   return (
     <>
       <div className={s.products}>Products</div>
+      <div className={s.deleteAll_btn} onClick={()=>{
+        dispatch(deleteItemsFromCart())
+      }}>Очистити корзину</div>
       {products ? (
         products.map((product: Product) => {
           return <Card key={product.id} data={product} />;

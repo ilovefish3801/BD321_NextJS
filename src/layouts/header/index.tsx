@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <header className={s.header}>Header</header>
-      <p>{CART_ITEMS.length}</p>
+      <p>{CART_ITEMS.length > 0 ? CART_ITEMS.length : "Cart is empty"}</p>
       <ul>
         <li>
           <Link href={`/`}>Home</Link>
