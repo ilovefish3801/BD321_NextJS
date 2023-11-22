@@ -18,32 +18,49 @@ const getAllProducts = async () => {
     });
 };
 
-const Products = () => {
+interface Props{
+  prods: Product[]
+}
+
+const Products = ({prods}: Props) => {
   // init
   const prod = new Prod();
   const dispatch = useDispatch()
   // states
-  const [products, setProducts] = useState<Product[] | null>(null);
+  const [products, setProducts] = useState<Product[] | null>(prods);
+  
   // load
   useEffect(() => {
     // getAllProducts().then((data: Product[]) => setProducts(data));
-    prod.getData("posts").then((data: Product[]) => setProducts(data));
   }, []);
+
   return (
     <>
       <div className={s.products}>Products</div>
       <div className={s.deleteAll_btn} onClick={()=>{
         dispatch(deleteItemsFromCart())
       }}>Очистити корзину</div>
-      {products ? (
-        products.map((product: Product) => {
-          return <Card key={product.id} data={product} />;
-        })
-      ) : (
-        <div>Products Loading....</div>
-      )}
+      <div>
+        {products ? (
+          products.map((product: Product) => {
+            return <Card key={product.id} data={product} />;
+          })
+        ) : (
+          <div>Products Loading....</div>
+        )}
+      </div>
     </>
   );
 };
+
+// SSR
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const prod = new Prod();
+  const data = await prod.getData("posts");
+ 
+  // Pass data to the page via props
+  return { props: { prods: data } }
+}
 
 export default Products;
