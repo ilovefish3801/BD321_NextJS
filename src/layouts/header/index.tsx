@@ -27,7 +27,7 @@ const Header = () => {
         <li>
           <Link href={`/redux`}>Redux</Link>
         </li>
-        <li></li>
+        <li><Link href={`/Cart`}>Cart</Link></li>
       </ul>
     </>
   );

@@ -57,7 +57,7 @@ const Products = ({prods}: Props) => {
 export async function getServerSideProps() {
   // Fetch data from external API
   const prod = new Prod();
-  const data = await prod.getData("posts");
+  const data = await prod.getData("products");
  
   // Pass data to the page via props
   return { props: { prods: data } }
