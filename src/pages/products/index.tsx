@@ -24,7 +24,6 @@ interface Props{
 
 const Products = ({prods}: Props) => {
   // init
-  const prod = new Prod();
   const dispatch = useDispatch()
   // states
   const [products, setProducts] = useState<Product[] | null>(prods);
@@ -46,7 +45,7 @@ const Products = ({prods}: Props) => {
             return <Card key={product.id} data={product} />;
           })
         ) : (
-          <div>Products Loading....</div>
+          <div>Products Are Loading....</div>
         )}
       </div>
     </>
