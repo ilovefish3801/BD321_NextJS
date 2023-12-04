@@ -24,7 +24,7 @@ class About extends Component<Props, State>{
       counter: prevState.counter - 1
     }))
   }
-
+  
   render(): ReactNode {
     return (
       <>
